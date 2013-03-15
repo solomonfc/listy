@@ -1,17 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 	<head>
-			<title>Listy</title>
+			<title>{{ tasklist.title }}</title>
 	</head>
-
 	<body>
-		<h1>Tasks</h1>
-		{% for task in tasks%}
-			<h3>{{ task.title }}</h3>
-				<p>{{ task.updated }}</p>
-				<p>{{ task.selfLink }}</p>
-		{% endfor%}
+		<h1>
+			{{ tasklist.title }}
+		</h1>
+		{% for task in tasks %}
+			<h3 
+				data-updated="{{ task.updated }}" 
+				data-status="{{ task.status }}" 
+				data-kind="{{ task.kind }}" 
+				data-etag="{{ task.etag }}" 
+				data-position="{{ task.position }}" 
+				data-id="{{ task.id }}" 
+				data-selfLink="{{ task.selfLink }}"
+			>
+				{{ task.title }}
+			</h3>
+		{% endfor %}
 	</body>
 </html>

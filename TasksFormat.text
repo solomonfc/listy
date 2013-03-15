@@ -1,0 +1,38 @@
+//Tasks
+{
+	u'items': 
+		[
+			{
+				u'status': u'needsAction', 
+				u'kind': u'tasks#task', 
+				u'title': u'item1', 
+				u'updated': u'2013-02-22T01:34:01.000Z', 
+				u'etag': u'"8UZu4IIqxQCICIkoEjiuYdw53kI/LTE0NzQyNTU3MDI"', 
+				u'position': u'00000000000000010081', 
+				u'id': u'MTc2MTI5OTU1OTM5NjAyNzYzODA6MDoxNDQ2ODM2Mzk5', 
+				u'selfLink': u'https://www.googleapis.com/tasks/v1/lists/MTc2MTI5OTU1OTM5NjAyNzYzODA6MDow/tasks/MTc2MTI5OTU1OTM5NjAyNzYzODA6MDoxNDQ2ODM2Mzk5'
+			},
+
+		{u'status': u'needsAction', u'kind': u'tasks#task', u'title': u'item2', u'updated': u'2013-02-22T01:34:05.000Z', u'etag': u'"8UZu4IIqxQCICIkoEjiuYdw53kI/LTIwMjQzODY1MDQ"', u'position': u'00000000000000015122', u'id': u'MTc2MTI5OTU1OTM5NjAyNzYzODA6MDoxMDE0NTAyNTY1', u'selfLink': u'https://www.googleapis.com/tasks/v1/lists/MTc2MTI5OTU1OTM5NjAyNzYzODA6MDow/tasks/MTc2MTI5OTU1OTM5NjAyNzYzODA6MDoxMDE0NTAyNTY1'}
+		], 
+	u'kind': u'tasks#tasks', 
+	u'etag': u'"8UZu4IIqxQCICIkoEjiuYdw53kI/MTgyNTA1NTkyNA"'
+}
+
+// TaskLists
+{	
+	u'items': 
+		[
+			{
+				u'kind': u'tasks#taskList', 
+				u'updated': u'2013-03-15T06:41:29.000Z', 
+				u'id': u'MTc2MTI5OTU1OTM5NjAyNzYzODA6MDow', 
+				u'selfLink': u'https://www.googleapis.com/tasks/v1/users/@me/lists/MTc2MTI5OTU1OTM5NjAyNzYzODA6MDow', 
+				u'title': u'To DO'
+			}, 
+			
+			{u'kind': u'tasks#taskList', u'updated': u'2013-01-21T00:54:29.000Z', u'id': u'MTc2MTI5OTU1OTM5NjAyNzYzODA6MTcyNTI5MjEyMzow', u'selfLink': u'https://www.googleapis.com/tasks/v1/users/@me/lists/MTc2MTI5OTU1OTM5NjAyNzYzODA6MTcyNTI5MjEyMzow', u'title': u'Shopping List'}
+		], 
+	u'kind': u'tasks#taskLists', 
+	u'etag': u'"8UZu4IIqxQCICIkoEjiuYdw53kI/hyaJeXR1VDl4IuG00p4QOWS_ucQ"'
+}
