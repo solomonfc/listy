@@ -1,5 +1,8 @@
 import webapp2
+import os
+
 from google.appengine.api import users
+from google.appengine.ext.webapp import template
 
 class MainPage(webapp2.RequestHandler):
 	def get(self):
