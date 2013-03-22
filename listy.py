@@ -9,9 +9,10 @@ from oauth2client.appengine import OAuth2Decorator
 
 import settings
 
-decorator = OAuth2Decorator(client_id=settings.CLIENT_ID,
-														client_secret=settings.CLIENT_SECRET,
-														scope=settings.SCOPE)
+decorator = OAuth2Decorator(
+	client_id=settings.CLIENT_ID,
+	client_secret=settings.CLIENT_SECRET,
+	scope=settings.SCOPE)
 
 service = build('tasks', 'v1')
 
@@ -29,18 +30,11 @@ class MainHandler(webapp2.RequestHandler):
 class MainPage(webapp2.RequestHandler):
 	def get(self):
 
-			if users.get_current_user():
-					url = users.create_logout_url(self.request.uri)
-					url_linktext = 'Logout'
-			else:
-					url = users.create_login_url(self.request.uri)
-					url_linktext = 'Login'
-
 			template_values = {
 					'url': "http://www.google.com.hk",
 					'url_linktext': "Google HK",
 			}
-			
+
 			path = os.path.join(os.path.dirname(__file__), 'index.html')
 			self.response.out.write(template.render(path, template_values))
 
@@ -48,7 +42,6 @@ class Listy(webapp2.RequestHandler):
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/plain'
 		self.response.write('!!!Listy!!!')
-
 
 app = webapp2.WSGIApplication([
 			('/', MainHandler),
