@@ -15,7 +15,6 @@ decorator = OAuth2Decorator(client_id=settings.CLIENT_ID,
 
 service = build('tasks', 'v1')
 
-
 class MainHandler(webapp2.RequestHandler):
 
 	@decorator.oauth_required
@@ -30,23 +29,31 @@ class MainHandler(webapp2.RequestHandler):
 class MainPage(webapp2.RequestHandler):
 	def get(self):
 
-		user = users.get_current_user()
+			if users.get_current_user():
+					url = users.create_logout_url(self.request.uri)
+					url_linktext = 'Logout'
+			else:
+					url = users.create_login_url(self.request.uri)
+					url_linktext = 'Login'
 
-		if user:
-			self.response.headers['Content-Type'] = 'text/plain'
-			self.response.out.write('Hello, ' + user.nickname())
-		else:
-			self.redirect(users.create_login_url(self.request.uri))
+			template_values = {
+					'url': "http://www.google.com.hk",
+					'url_linktext': "Google HK",
+			}
+			
+			path = os.path.join(os.path.dirname(__file__), 'index.html')
+			self.response.out.write(template.render(path, template_values))
 
 class Listy(webapp2.RequestHandler):
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/plain'
 		self.response.write('!!!Listy!!!')
 
+
 app = webapp2.WSGIApplication([
 			('/', MainHandler),
 			(decorator.callback_path, decorator.callback_handler()),
-			('/Page', MainPage), 
+			('/page', MainPage), 
 			("/listy", Listy)
 	],debug=True)
 
