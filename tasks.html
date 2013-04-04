@@ -9,8 +9,9 @@
 	<body>
 		<h1>Tasks</h1>
 		{% for task in tasks%}
-			<h1>{{ task.title }}</h1>
-				<p>{{ task.title }}</p>
+			<h3>{{ task.title }}</h3>
+				<p>{{ task.updated }}</p>
+				<p>{{ task.selfLink }}</p>
 		{% endfor%}
 	</body>
 </html>
