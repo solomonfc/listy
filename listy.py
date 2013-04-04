@@ -20,23 +20,25 @@ class MainHandler(webapp2.RequestHandler):
 
 	@decorator.oauth_required
 	def get(self):
-		tasks = service.tasks().list(tasklist='@default').execute(
-			http=decorator.http())
-		self.response.write('<html><body><ul>')
-		for task in tasks['items']:
-			self.response.write('<li>%s</li>' % task['title'])
-		self.response.write('</ul></body><html>')
+		tasks = service.tasks().list(tasklist='@default').execute(http=decorator.http())
+
+		template_values = {
+			'tasks': tasks['items'],
+		}
+
+		path = os.path.join(os.path.dirname(__file__), 'tasks.html')
+		self.response.out.write(template.render(path, template_values))
 
 class MainPage(webapp2.RequestHandler):
 	def get(self):
 
-			template_values = {
-					'url': "http://www.google.com.hk",
-					'url_linktext': "Google HK",
-			}
+		template_values = {
+				'url': "http://www.google.com.hk",
+				'url_linktext': "Google HK",
+		}
 
-			path = os.path.join(os.path.dirname(__file__), 'index.html')
-			self.response.out.write(template.render(path, template_values))
+		path = os.path.join(os.path.dirname(__file__), 'index.html')
+		self.response.out.write(template.render(path, template_values))
 
 class Listy(webapp2.RequestHandler):
 	def get(self):
@@ -45,9 +47,9 @@ class Listy(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
 			('/', MainHandler),
-			(decorator.callback_path, decorator.callback_handler()),
 			('/page', MainPage), 
-			("/listy", Listy)
+			("/listy", Listy),
+			(decorator.callback_path, decorator.callback_handler())
 	],debug=True)
 
 def main():
